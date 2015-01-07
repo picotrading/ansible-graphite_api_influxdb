@@ -1,0 +1,46 @@
+---
+
+# Default cache dir
+graphite_api_influxdb_cache_dir: /tmp/graphite-api-cache
+
+# Default InfluxDB server
+graphite_api_influxdb_server: 127.0.0.1
+
+# Default InfluxDB port number
+graphite_api_influxdb_port: 8086
+
+# Default InfluxDB user name
+graphite_api_influxdb_user: root
+
+# Default InfluxDB user password
+graphite_api_influxdb_password: root
+
+# Default InfluxDB database name
+graphite_api_influxdb_db: graphite
+
+# Default storage schema (the same like Carbon schema)
+graphite_api_influxdb_schema:
+  - ['', 10]
+  - ['high-res-metrics', 1]
+
+# Default config template
+graphite_api_influxdb_config:
+  search_index: /var/lib/graphite-api/index
+  finders:
+    - graphite_influxdb.InfluxdbFinder
+  functions:
+    - graphite_api.functions.SeriesFunctions
+    - graphite_api.functions.PieFunctions
+  cache:
+    type: filesystem
+    dir: "{{ graphite_api_influxdb_cache_dir }}"
+  time_zone: "{{ graphite_api_timezone }}"
+  allowed_origins:
+    - "{{ graphite_api_cors_hosts }}"
+  influxdb:
+    host: "{{ graphite_api_influxdb_server }}"
+    port: "{{ graphite_api_influxdb_port }}"
+    user: "{{ graphite_api_influxdb_user }}"
+    pass: "{{ graphite_api_influxdb_password }}"
+    db: "{{ graphite_api_influxdb_db }}"
+    schema: "{{ graphite_api_influxdb_schema }}"

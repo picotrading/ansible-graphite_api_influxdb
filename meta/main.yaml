@@ -1,0 +1,16 @@
+---
+
+galaxy_info:
+  author: Jiri Tyr
+  description: Role which installs Graphite API with InfluxDB storage backend
+  license: MIT
+  min_ansible_version: 1.7
+  platforms:
+    - name: EL
+      versions:
+        - 7
+  categories:
+    - system
+dependencies:
+  - role: graphite_api
+    graphite_api_config: "{{ graphite_api_influxdb_config }}"
