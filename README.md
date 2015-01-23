@@ -4,7 +4,7 @@ graphite_api_influxdb
 Role which installs Graphite API with InfluxDB storage backend from RPM packages.
 You must build the RPM packages and place them into a YUM repo (see
 [`yumrepo`](https://github.com/picotrading/ansible-yumrepo) role). This role is
-actually just a wrapper arount the
+actually just a wrapper around the
 [`graphite_api`](https://github.com/picotrading/ansible-graphite_api) role.
 
 
