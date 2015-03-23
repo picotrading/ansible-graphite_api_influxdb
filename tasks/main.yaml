@@ -8,4 +8,6 @@
 
 - name: Install graphite-api RPM package
   yum:
-    name: python-graphite-influxdb
+    name: "{{ graphite_api_influxdb_pkg }}"
+  notify:
+    - Restart graphite-api service

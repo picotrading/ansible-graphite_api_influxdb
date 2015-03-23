@@ -70,6 +70,9 @@ Role variables
 List of variables used by the role:
 
 ```
+# Package to be installed (you can force a specific version here)
+graphite_api_influxdb_pkg: python-graphite-influxdb
+
 # Default cache dir
 graphite_api_influxdb_cache_dir: /tmp/graphite-api-cache
 
