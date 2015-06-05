@@ -6,8 +6,13 @@
       ansible_os_family == "RedHat" and
       ansible_distribution_major_version | int >= 7
 
-- name: Install graphite-api RPM package
+- name: Install graphite-api RPM package and dependencies
   yum:
-    name: "{{ graphite_api_influxdb_pkg }}"
+    name: "{{ item }}"
+  with_items: "{{
+    [ graphite_api_influxdb_pkg ] +
+    graphite_api_influxdb_pkg_deps }}"
   notify:
     - Restart graphite-api service
+  tags:
+    - graphite_api_influxdb_pkg
